@@ -1,18 +1,10 @@
-PImage player;
-int x = 400;
-int y = 300;
 
-void setup(){
- size(800, 600); 
- player = loadImage("adorable.png");
-}
+public class player{
+protected PImage player;
+protected int x = 400;
+protected int y = 300;
 
-void draw(){
- background(255);
- image(player, x, y);
- player.resize(0, 50);
- move();
-}
+
 
 void move(){
  if(keyPressed){
@@ -31,4 +23,6 @@ void move(){
        }
 }
  }
+}
+
 }
