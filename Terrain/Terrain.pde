@@ -8,6 +8,7 @@ boolean genRoad = false;
 
 PImage mid;
 int my = 0, my2 = 600;
+int backCounter;
 
 PImage fore;
 int fy = 0, fy2 = 600;
@@ -46,12 +47,17 @@ void draw(){
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == DOWN) {
+      if (backCounter > 20){
+      }
+      else{
       by--; by2--;
       my-=2; my2-=2;
       fy-=3; fy2-=3;
       roady-=3;
       counter --;
+      backCounter++;
       generateRoads();
+      }
       
       
     }
@@ -61,6 +67,7 @@ void keyPressed() {
       fy+=3; fy2+=3;
       roady+= 3;
       counter ++;
+      backCounter--;
       System.out.println(counter);
       generateRoads();
     }
