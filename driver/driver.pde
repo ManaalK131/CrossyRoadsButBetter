@@ -1,3 +1,5 @@
+
+
 Terrain terr;
 player pl;
 
@@ -33,7 +35,6 @@ void draw(){
   if (terr.my >600) {terr.by = -600;} if (terr.by2 >600) {terr.by2 = -600;}
   if (terr.fy >600) {terr.fy = -600;} if (terr.fy2 >600) {terr.fy2 = -600;}
   terr.generateRoads();
-   background(255);
  image(pl.player, pl.x, pl.y);
  pl.player.resize(0, 50);
  pl.move();
