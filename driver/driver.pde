@@ -37,5 +37,6 @@ void draw(){
   terr.generateRoads();
  image(pl.player, pl.x, pl.y);
  pl.player.resize(0, 50);
- pl.move();
+ //pl.move();
+ terr.move();
 }

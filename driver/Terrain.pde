@@ -13,8 +13,8 @@ protected int my = 0, my2 = 600;
 protected PImage fore;
 protected int fy = 0, fy2 = 600;
 
-
-void keyPressed() {
+void move() {
+  if(keyPressed){
   if (key == CODED) {
     if (keyCode == DOWN) {
       by--; by2--;
@@ -37,6 +37,8 @@ void keyPressed() {
     }
   }
 }
+}
+
 //RIGHT NOW IF YOU SURPASS 5000 STEPS YOU PRACTICALLY WIN SINCE OBSTACLES WON'T GENERATE ANYMORE
 protected void generateRoads(){
   road = loadImage("shortRoad.png");
