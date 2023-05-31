@@ -11,6 +11,7 @@ int counter;
 int by = 0, by2 = 600;
 int type = int(random(0,4));
 boolean genRoad = false;
+int curVel = 720;
 
 PImage mid;
 int my = 0, my2 = 600;
@@ -27,35 +28,41 @@ void CarSetup(int type){
  if (type == 0){
     carArray[0].resize(80, 50);
     image(carArray[type], vr, roady);
+    curVel = vr;
     vr-=velocity;
   }
   if (type == 1){
      carArray[1].resize(80, 80);
      image(carArray[type], vg, roady);
+     curVel = vg;
      vg-=velocity;
   }
   if (type == 2){
      carArray[2].resize(80, 80);
      image(carArray[type], vb, roady);
+     curVel = vb;
      vb-=velocity;
   }
   if (type == 3){
    carArray[3].resize(80, 50);
    image(carArray[type], vp, roady);
+   curVel = vp;
    vp-=velocity;
 }
   
-  //work in progress, plan is using the individual x coordinates for different cars, if the latest coordinate is less than 200, we'd create a new image (no recursion b/c recursion overload)
-  //that is nexdt in the image array that moves that certain way. 
-  if (vr < 200){
-    type = type +1/4;
-    
-   
-  }
+
   
   
 }
 
+void genCars(){
+  if (curVel < 200){
+    System.out.println(type);
+    type = (type+1)% 4;
+    
+    CarSetup(type); 
+  }
+}
 
 
 void setup(){
@@ -76,14 +83,13 @@ void draw(){
   image(back, 0, by); image(back, 0, by2);
   image(mid, 0, my); image(back,0, my2);
   image(fore,0, fy); image(fore, 0, fy2);
-  if (frameCount % 50 == 0){
-    CarSetup(3);
-  }
+ 
   
   if (genRoad){
     image(road, 0, roady-10);
     //type = int(random(0,4));
     CarSetup(type);
+    genCars(); 
     if (roady >600) {
       genRoad = false;
       roady = -300;
