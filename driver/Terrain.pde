@@ -18,9 +18,9 @@ void move() {
   if (key == CODED) {
     if (keyCode == DOWN) {
       by--; by2--;
-      my-=2; my2-=2;
-      fy-=3; fy2-=3;
-      roady-=3;
+      my--; my2--;
+      fy--; fy2--;
+      roady--;
       counter --;
       generateRoads();
       
@@ -28,9 +28,9 @@ void move() {
     }
     if (keyCode == UP) {
       by++; by2++;
-      my+=2; my2+=2;
-      fy+=3; fy2+=3;
-      roady+= 3;
+      my++; my2++;
+      fy++; fy2++;
+      roady++;
       counter ++;
       System.out.println(counter);
       generateRoads();

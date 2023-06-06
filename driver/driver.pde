@@ -4,16 +4,18 @@ Terrain terr;
 player pl;
 
 void setup(){
-  terr = new Terrain();
+  //terr = new Terrain();
+  terr = new newGround();
   pl = new player();
   size(800, 600);
-  terr.back = loadImage("grass.png");
-  terr.back.resize(800, 610);
-  terr.mid = loadImage("grass.png");
-  terr.mid.resize(800, 608);
-  terr.fore = loadImage("grass.png");
-  terr.fore.resize(800, 610);
-   size(800, 600); 
+  //terr.back = loadImage("grass.png");
+  //terr.back.resize(800, 610);
+  //terr.mid = loadImage("grass.png");
+  //terr.mid.resize(800, 608);
+  //terr.fore = loadImage("grass.png");
+  //terr.fore.resize(800, 610);
+  // size(800, 600); 
+  terr.newGround = loadImage("magic.png");
   pl.player = loadImage("adorable.png");
 }
 
@@ -37,6 +39,6 @@ void draw(){
   terr.generateRoads();
  image(pl.player, pl.x, pl.y);
  pl.player.resize(0, 50);
- //pl.move();
+ pl.move();
  terr.move();
 }
