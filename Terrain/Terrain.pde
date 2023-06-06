@@ -3,9 +3,9 @@ PImage road;
 PImage car;
 PImage bigRoad;
 int vr = 720;
-int vg = 720;
-int vp = 720;
-int vb = 720;
+int vg = 1020;
+int vp = 1320;
+int vb = 1620;
 int velocity = 3;
 int roady = 0;
 int counter;
@@ -26,43 +26,76 @@ PImage fore;
 int fy = 0, fy2 = 600;
 
 
-void CarSetup(int type){
+void CarSetup(int type){  //int type){
+
+  /*carArray[type+1/4].resize(80, 80);
+  image(carArray[type+1/4], vg + 240, roady);
+  vg -= velocity;
+  
+  
+  
+  */
  if (type == 0){
     carArray[0].resize(80, 50);
-    image(carArray[type], vr, roady);
-    curVel = vr;
-    vr-=velocity;
+    image(carArray[0], vr, roady);
+
+
   }
   if (type == 1){
      carArray[1].resize(80, 80);
-     image(carArray[type], vg, roady);
-     curVel = vg;
-     vg-=velocity;
+     image(carArray[1], vg , roady+20);
+
+
   }
   if (type == 2){
      carArray[2].resize(80, 80);
-     image(carArray[type], vb, roady);
-     curVel = vb;
-     vb-=velocity;
+     image(carArray[2], vp, roady-10);
+
   }
   if (type == 3){
    carArray[3].resize(80, 50);
-   image(carArray[type], vp, roady);
-   curVel = vp;
-   vp-=velocity;
-}
-  
+   image(carArray[3], vb, roady+30);
 
+}
+  
   
   
 }
+
+
+
 
 void genCars(){
-  if (curVel < 200){
-    System.out.println(type);
-    type = (type+1)% 4;
+  velocity = 3 + (counter / 400);
+  CarSetup(type);
+  
+  vr-=velocity;
+  CarSetup((type+1)%4);
+  
+  vg-=velocity;
+   CarSetup((type+2) %4);
+  
+  vp-=velocity;
+   CarSetup((type+3) %4);
+  
+  vb-=velocity;
+  
+  
+  if (vr < -300 ) {
+    vr = 720;
+  }
+ 
+  
+ if (vg < -250 ){
+    vg = 720;
+  }
     
-    CarSetup(type); 
+  if (vp < -200 ){
+    vp = 720 + 600;
+  }
+  
+  if (vb < -100 ){
+    vb = 720 + 900;
   }
 }
 
@@ -70,9 +103,13 @@ void genCars(){
 void setup(){
   size(800, 600);
   carArray[0] = loadImage("redCar.png");
+  carArray[0].resize(80, 50);
   carArray[1] = loadImage("greenCar.png");
   carArray[2] = loadImage("blueCar.png");
   carArray[3] = loadImage("police.png");
+  carArray[1].resize(80, 80);
+  carArray[2].resize(80, 80);
+  carArray[3].resize(80, 50);
   back = loadImage("grass.png");
   back.resize(800, 620);
   mid = loadImage("grass.png");
@@ -87,13 +124,10 @@ void draw(){
   image(fore,0, fy); image(fore, 0, fy2);
   
   if (genBigRoad){
-    image(bigRoad, 0, bRoady - 200);
-    //type = int(random(0,4));
-  //  CarSetup(type);
-   // genCars(); 
-    if (bRoady >800) {
+    image(bigRoad, 0, roady + 150);
+    if (roady >800) {
       genRoad = false;
-      bRoady = 0;
+      roady = 0;
     }
   }
   if (genRoad){
