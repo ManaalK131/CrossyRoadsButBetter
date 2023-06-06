@@ -6,11 +6,11 @@ int vr = 720;
 int vg = 1020;
 int vp = 1320;
 int vb = 1620;
-int velocity = 3; 
+int velocity = 3;
 int roady = 0;
 int counter;
 int by = 0, by2 = 600;
-int type = 0; //int(random(0,4));
+int type = int(random(0,4));
 boolean genRoad = false;
 boolean genBigRoad = false;
 int curVel = 720;
@@ -37,20 +37,24 @@ void CarSetup(int type){  //int type){
   */
  if (type == 0){
     carArray[0].resize(80, 50);
+    image(carArray[0], vr, roady);
 
 
   }
   if (type == 1){
      carArray[1].resize(80, 80);
+     image(carArray[1], vg , roady+20);
 
 
   }
   if (type == 2){
      carArray[2].resize(80, 80);
+     image(carArray[2], vp, roady-10);
 
   }
   if (type == 3){
    carArray[3].resize(80, 50);
+   image(carArray[3], vb, roady+30);
 
 }
   
@@ -63,52 +67,36 @@ void CarSetup(int type){  //int type){
 
 void genCars(){
   velocity = 3 + (counter / 400);
-  System.out.println(counter);
-  //CarSetup(type);
-  image(carArray[type], vr, roady);
+  CarSetup(type);
+  
   vr-=velocity;
- // CarSetup(type+1%4);
-  image(carArray[type+1%4], vg , roady+20);
+  CarSetup((type+1)%4);
+  
   vg-=velocity;
- //  CarSetup(type+2%4);
-  image(carArray[type+2%4], vp, roady-10);
+   CarSetup((type+2) %4);
+  
   vp-=velocity;
-//   CarSetup(type+3%4);
-  image(carArray[type+3%4], vb, roady+30);
+   CarSetup((type+3) %4);
+  
   vb-=velocity;
   
   
   if (vr < -300 ) {
     vr = 720;
-    //image(carArray[type], vr, roady);
   }
-  
+ 
   
  if (vg < -250 ){
     vg = 720;
   }
-  
-  
-  
+    
   if (vp < -200 ){
     vp = 720 + 600;
   }
+  
   if (vb < -100 ){
     vb = 720 + 900;
   }
-  
-  
-  
-    
-/*
-  if (vr < 200){
-    System.out.println(type);
-  
-    type = (type+1)% 4;
-    
-    CarSetup(type); 
-  }
-  */
 }
 
 
@@ -137,9 +125,6 @@ void draw(){
   
   if (genBigRoad){
     image(bigRoad, 0, roady + 150);
-    //type = int(random(0,4));
-  //  CarSetup(type);
-   // genCars(); 
     if (roady >800) {
       genRoad = false;
       roady = 0;
