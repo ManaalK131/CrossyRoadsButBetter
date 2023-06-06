@@ -6,7 +6,7 @@ int vr = 720;
 int vg = 1020;
 int vp = 1320;
 int vb = 1620;
-int velocity = 3;
+int velocity = 3; 
 int roady = 0;
 int counter;
 int by = 0, by2 = 600;
