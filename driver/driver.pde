@@ -39,6 +39,7 @@ void draw(){
   }
   if (terr.genRoad){
     image(terr.road, 0, terr.roady);
+    terr.genCars();
     if (terr.roady >600) {
       terr.genRoad = false;
       terr.roady = -300;
@@ -56,4 +57,17 @@ void draw(){
  pl.player.resize(0, 50);
  pl.move();
  terr.move();
+ if (collision()==true){
+   System.out.println("Game Over");
+   System.exit(0);
+ }
+}
+
+boolean collision(){
+  if ((Math.abs(terr.yCoor - pl.y)) < 5){
+   return true; 
+  }
+  else{
+    return false;
+  }
 }

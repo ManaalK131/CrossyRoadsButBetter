@@ -167,6 +167,7 @@ void move() {
       my--; my2--;
       fy--; fy2--;
       roady--;
+      bRoady--;
       counter --;
       generateRoads();
       
@@ -177,6 +178,7 @@ void move() {
       my++; my2++;
       fy++; fy2++;
       roady++;
+      bRoady++;
       counter ++;
       System.out.println(counter);
       generateRoads();
