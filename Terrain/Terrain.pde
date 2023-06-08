@@ -218,7 +218,7 @@ void draw(){
     System.out.println("U won. My grandma's pround");
     
   }
-  if (counter >= 2295){
+  if (counter > 2295){
     image(end, 0, roady);
     System.out.println("Y are you still playing? Bad things will happen to the code if you continue");
     
