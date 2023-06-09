@@ -161,7 +161,7 @@ void startScreen(){
   start.resize(800, 600);
   background(start);
   mode1 = new Buttons(50, 100, 100, 50, "Normal", 0, 200, 200);
-  mode2 = new Buttons(50, 300, 130, 60, "Walking Dead", 0, 200, 200);
+  mode2 = new Buttons(600, 100, 130, 60, "Walking Dead", 0, 200, 200);
   if (mode1.isClicked()  || mode2.isClicked()){
     gameState = true;
   }
