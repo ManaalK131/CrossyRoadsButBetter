@@ -41,7 +41,14 @@ void setup(){
     terr.fore = loadImage("grass.png");
     terr.fore.resize(800, 620);
   }
-
+  terr.carArray[0] = loadImage("redCar.png");
+  terr.carArray[0].resize(80, 50);
+  terr.carArray[1] = loadImage("greenCar.png");
+  terr.carArray[2] = loadImage("blueCar.png");
+  terr.carArray[3] = loadImage("police.png");
+  terr.carArray[1].resize(80, 80);
+  terr.carArray[2].resize(80, 80);
+  terr.carArray[3].resize(80, 50);
   terr.back = loadImage("magic.png");
   terr.back.resize(800, 610);
   terr.mid = loadImage("magic.png");
@@ -49,7 +56,7 @@ void setup(){
   terr.fore = loadImage("magic.png");
   terr.fore.resize(800, 610);
   size(800, 600); 
-  //pl.player = loadImage("pika.png");
+  pl.player = loadImage("pika.png");
   endscreen = loadImage("gameover.png");
   endscreen.resize(800, 600);
 }
@@ -149,4 +156,3 @@ boolean collision(){
 public double Distance(double x1, double y1, double x2, double y2) {       
   return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
 }
-
