@@ -71,22 +71,16 @@ void draw(){
 }
 
 boolean collision(){
-  if ((Math.abs(terr.roady - pl.y)) < 20|| 
-  ((Math.abs(terr.bRoady - pl.y)) < 20)){
-    if (((Math.abs(terr.vr - pl.x)) < 20) || 
-      ((Math.abs(terr.vg - pl.x)) < 20) || 
-      ((Math.abs(terr.vp - pl.x)) < 20) || 
-      ((Math.abs(terr.vb - pl.x)) < 20) || 
-      ((Math.abs(terr.vbr - pl.x)) < 20) || 
-      ((Math.abs(terr.vbg - pl.x)) < 20) || 
-      ((Math.abs(terr.vbp - pl.x)) < 20) || 
-      ((Math.abs(terr.vbb - pl.x)) < 20)){
-         return true; 
+  if ((dist(terr.vr, terr.roady, pl.x, pl.y) < 40 + 25)|| 
+  (dist(terr.vg, terr.roady, pl.x, pl.y) < 40 + 25)|| 
+  (dist(terr.vp, terr.roady, pl.x, pl.y) < 40 + 25)|| 
+  (dist(terr.vb, terr.roady, pl.x, pl.y) < 40 + 25)|| 
+  (dist(terr.vbr, terr.bRoady, pl.x, pl.y) < 40 + 25)|| 
+  (dist(terr.vbg, terr.bRoady, pl.x, pl.y) < 40 + 25)|| 
+  (dist(terr.vbp, terr.bRoady, pl.x, pl.y) < 40 + 25)|| 
+  (dist(terr.vbb, terr.bRoady, pl.x, pl.y) < 40 + 25)){
+     return true; 
         }
-        else{
-        return false;
-      }
-  }
   else{
     return false;
   }
