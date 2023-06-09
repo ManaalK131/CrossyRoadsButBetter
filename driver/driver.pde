@@ -1,7 +1,9 @@
-
+import java.lang.Math;
 
 Terrain terr;
 player pl;
+protected PImage endscreen;
+protected int lost = 0;
 
 void setup(){
   terr = new Terrain();
@@ -23,6 +25,8 @@ void setup(){
   terr.fore.resize(800, 610);
   size(800, 600); 
   pl.player = loadImage("adorable.png");
+  endscreen = loadImage("gameover.png");
+  endscreen.resize(1000, 800);
 }
 
 void draw(){
@@ -58,13 +62,24 @@ void draw(){
  pl.move();
  terr.move();
  if (collision()==true){
-   System.out.println("Game Over");
-   System.exit(0);
+   lost++;
+   pl.player = loadImage("oof.png");
+ }
+ while(lost > 0){
+   image(endscreen, 60, 0);
  }
 }
 
 boolean collision(){
-  if ((Math.abs(terr.yCoor - pl.y)) < 5){
+  if (((Math.abs(terr.vr - pl.x)) < 1) || 
+  ((Math.abs(terr.vg - pl.x)) < 1) || 
+  ((Math.abs(terr.vp - pl.x)) < 1) || 
+  ((Math.abs(terr.vb - pl.x)) < 2) || 
+  ((Math.abs(terr.vbr - pl.x)) < 2) || 
+  ((Math.abs(terr.vbg - pl.x)) < 2) || 
+  ((Math.abs(terr.vbp - pl.x)) < 2) || 
+  ((Math.abs(terr.vbb - pl.x)) < 2)){
+    //OH CHECK THE Y VALUES AS WELL
    return true; 
   }
   else{
