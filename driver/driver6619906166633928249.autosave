@@ -5,9 +5,16 @@ player pl;
 protected PImage endscreen;
 protected int lost = 0;
 
-void check(){
- if (terr.gameState == false){
+void setup(){
+  terr = new Terrain();
+  pl = new player();
+  size(800, 600); 
+  pl.player = loadImage("pika.png");
+  endscreen = loadImage("gameover.png");
+  endscreen.resize(800, 600);
+   if (terr.gameState == false){
     terr.startScreen();
+
   }
   else{
     if (terr.mode1.isClicked()){
@@ -28,41 +35,17 @@ void check(){
    //   carArray[1].resize(80, 40);
     //  carArray[3].resize(80, 60);
     }
-    }
-}
-
-void setup(){
-  terr = new Terrain();
-  pl = new player();
-  size(800, 600);
-  check();
     terr.end = loadImage("congrats.png");
     terr.end.resize(800, 100);
-    terr.back = loadImage("grass.png");
+    terr.back = loadImage("magic.png");
     terr.back.resize(800, 620);
-    terr.mid = loadImage("grass.png");
+    terr.mid = loadImage("magic.png");
     terr.mid.resize(800, 608);
-    terr.fore = loadImage("grass.png");
+    terr.fore = loadImage("magic.png");
     terr.fore.resize(800, 620);
+  }
 
-  terr.carArray[0] = loadImage("redCar.png");
-  terr.carArray[0].resize(80, 50);
-  terr.carArray[1] = loadImage("greenCar.png");
-  terr.carArray[2] = loadImage("blueCar.png");
-  terr.carArray[3] = loadImage("police.png");
-  terr.carArray[1].resize(80, 80);
-  terr.carArray[2].resize(80, 80);
-  terr.carArray[3].resize(80, 50);
-  terr.back = loadImage("magic.png");
-  terr.back.resize(800, 610);
-  terr.mid = loadImage("magic.png");
-  terr.mid.resize(800, 608);
-  terr.fore = loadImage("magic.png");
-  terr.fore.resize(800, 610);
-  size(800, 600); 
-  pl.player = loadImage("pika.png");
-  endscreen = loadImage("gameover.png");
-  endscreen.resize(800, 600);
+
 }
 
 void draw(){
@@ -136,11 +119,11 @@ void draw(){
 }
 
 boolean collision(){
-    //System.out.println(terr.vbp);
-    //System.out.println(terr.bRoady+75);
-    //System.out.println(pl.x);
-    //System.out.println(pl.y);
-    //System.out.println(Distance(terr.vbp, terr.bRoady-55, pl.x, pl.y));
+    System.out.println(terr.vbp);
+    System.out.println(terr.bRoady+75);
+    System.out.println(pl.x);
+    System.out.println(pl.y);
+    System.out.println(Distance(terr.vbp, terr.bRoady-55, pl.x, pl.y));
     
   if ((Distance(terr.vr, terr.roady, pl.x, pl.y) < 20)|| 
   (Distance(terr.vg, terr.roady+20, pl.x, pl.y) < 20)|| 
