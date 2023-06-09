@@ -163,24 +163,24 @@ void move() {
   if(keyPressed){
   if (key == CODED) {
     if (keyCode == DOWN) {
-      by--; by2--;
-      my--; my2--;
-      fy--; fy2--;
-      roady--;
-      bRoady--;
+      by-=3; by2-=3;
+      my-=3; my2-=3;
+      fy-=3; fy2-=3;
+      roady-=3;
+      bRoady-=3;
       counter --;
       generateRoads();
       
       
     }
     if (keyCode == UP) {
-      by++; by2++;
-      my++; my2++;
-      fy++; fy2++;
-      roady++;
-      bRoady++;
+      by+=3; by2+=3;
+      my+=3; my2+=3;
+      fy+=3; fy2+=3;
+      roady+= 3;
+      bRoady+= 3;
       counter ++;
-      System.out.println(counter);
+      //System.out.println(counter);
       generateRoads();
     }
   }

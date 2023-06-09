@@ -26,7 +26,7 @@ void setup(){
   size(800, 600); 
   pl.player = loadImage("adorable.png");
   endscreen = loadImage("gameover.png");
-  endscreen.resize(1000, 800);
+  endscreen.resize(800, 600);
 }
 
 void draw(){
@@ -55,6 +55,8 @@ void draw(){
   if (terr.by > 600) {terr.by = -600;} if (terr.by2 > 600) {terr.by2 = -600;}
   if (terr.my >600) {terr.by = -600;} if (terr.by2 >600) {terr.by2 = -600;}
   if (terr.fy >600) {terr.fy = -600;} if (terr.fy2 >600) {terr.fy2 = -600;}
+  if (pl.disy <-600) {pl.disy = 600;} if (pl.disby <-600) {pl.disby = 600;} 
+  if (pl.disy > 600) {pl.disy = -600;} if (pl.disby <-600) {pl.disby = 600;}  
   terr.generateRoads();
   terr.generateBigRoad();
  image(pl.player, pl.x, pl.y);
@@ -71,17 +73,27 @@ void draw(){
 }
 
 boolean collision(){
-  if ((dist(terr.vr, terr.roady, pl.x, pl.y) < 40 + 25)|| 
-  (dist(terr.vg, terr.roady, pl.x, pl.y) < 40 + 25)|| 
-  (dist(terr.vp, terr.roady, pl.x, pl.y) < 40 + 25)|| 
-  (dist(terr.vb, terr.roady, pl.x, pl.y) < 40 + 25)|| 
-  (dist(terr.vbr, terr.bRoady, pl.x, pl.y) < 40 + 25)|| 
-  (dist(terr.vbg, terr.bRoady, pl.x, pl.y) < 40 + 25)|| 
-  (dist(terr.vbp, terr.bRoady, pl.x, pl.y) < 40 + 25)|| 
-  (dist(terr.vbb, terr.bRoady, pl.x, pl.y) < 40 + 25)){
+    System.out.println(terr.vbp);
+    System.out.println(terr.bRoady+75);
+    System.out.println(pl.x);
+    System.out.println(pl.y);
+    System.out.println(Distance(terr.vbp, terr.bRoady-55, pl.x, pl.y));
+    
+  if ((Distance(terr.vr, terr.roady, pl.x, pl.y) < 20)|| 
+  (Distance(terr.vg, terr.roady+20, pl.x, pl.y) < 20)|| 
+  (Distance(terr.vp, terr.roady-10, pl.x, pl.y) < 20)|| 
+  (Distance(terr.vb, terr.roady+30, pl.x, pl.y) < 20)|| 
+  (Distance(terr.vbr, terr.bRoady, pl.x, pl.y) < 20)|| 
+  (Distance(terr.vbg, terr.bRoady+100, pl.x, pl.y) < 20)|| 
+  (Distance(terr.vbp, terr.bRoady+75, pl.x, pl.y) < 18)|| 
+  (Distance(terr.vbb, terr.bRoady+40, pl.x, pl.y) < 18)){
      return true; 
         }
   else{
     return false;
   }
+}
+
+public double Distance(double x1, double y1, double x2, double y2) {       
+  return Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
 }
