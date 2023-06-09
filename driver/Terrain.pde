@@ -19,7 +19,7 @@ int type =  int(random(0,4));
 boolean genRoad = false;
 boolean genBigRoad = false;
 int curVel = 720;
-
+PImage end;
 protected PImage mid;
 protected int my = 0, my2 = 600;
 int backCounter;
@@ -28,6 +28,13 @@ PImage[] carArray = new PImage[4];
 int bRoady = roady + 150;
 protected PImage fore;
 protected int fy = 0, fy2 = 600;
+
+Buttons mode1; 
+Buttons mode2;
+boolean walkingDead = false;
+boolean normal = false; 
+boolean gameState = false;
+PImage start;
 
 void CarSetup(int type, int yCoor){ 
  if (type == 0){
@@ -156,6 +163,18 @@ void genCars(){
   }
 
   
+void startScreen(){
+  start = loadImage("start.png");
+  start.resize(800, 600);
+  background(start);
+  mode1 = new Buttons(50, 100, 100, 50, "Normal", 0, 200, 200);
+  mode2 = new Buttons(50, 300, 130, 60, "Walking Dead", 0, 200, 200);
+  if (mode1.isClicked()  || mode2.isClicked()){
+    gameState = true;
+  }
+  System.out.println(gameState);
+}
+
 
 
 
