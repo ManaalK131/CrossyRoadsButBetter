@@ -71,16 +71,21 @@ void draw(){
 }
 
 boolean collision(){
-  if (((Math.abs(terr.vr - pl.x)) < 1) || 
-  ((Math.abs(terr.vg - pl.x)) < 1) || 
-  ((Math.abs(terr.vp - pl.x)) < 1) || 
-  ((Math.abs(terr.vb - pl.x)) < 2) || 
-  ((Math.abs(terr.vbr - pl.x)) < 2) || 
-  ((Math.abs(terr.vbg - pl.x)) < 2) || 
-  ((Math.abs(terr.vbp - pl.x)) < 2) || 
-  ((Math.abs(terr.vbb - pl.x)) < 2)){
-    //OH CHECK THE Y VALUES AS WELL
-   return true; 
+  if ((Math.abs(terr.roady - pl.y)) < 20|| 
+  ((Math.abs(terr.bRoady - pl.y)) < 20)){
+    if (((Math.abs(terr.vr - pl.x)) < 20) || 
+      ((Math.abs(terr.vg - pl.x)) < 20) || 
+      ((Math.abs(terr.vp - pl.x)) < 20) || 
+      ((Math.abs(terr.vb - pl.x)) < 20) || 
+      ((Math.abs(terr.vbr - pl.x)) < 20) || 
+      ((Math.abs(terr.vbg - pl.x)) < 20) || 
+      ((Math.abs(terr.vbp - pl.x)) < 20) || 
+      ((Math.abs(terr.vbb - pl.x)) < 20)){
+         return true; 
+        }
+        else{
+        return false;
+      }
   }
   else{
     return false;
