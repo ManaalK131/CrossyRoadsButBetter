@@ -18,19 +18,24 @@ int type =  int(random(0,4));
 boolean genRoad = false;
 boolean genBigRoad = false;
 int curVel = 720;
-
+PImage end;
 PImage mid;
 int my = 0, my2 = 600;
 int backCounter;
 int yCoor; 
 PImage[] carArray = new PImage[4];
 
-
+boolean walkingDead = false;
+boolean normal = false; 
 
 int bRoady = roady + 150;
 
 PImage fore;
 int fy = 0, fy2 = 600;
+
+Buttons button; 
+
+
 
 
 void CarSetup(int type, int yCoor){ 
@@ -173,6 +178,8 @@ void setup(){
   carArray[1].resize(80, 80);
   carArray[2].resize(80, 80);
   carArray[3].resize(80, 50);
+  end = loadImage("congrats.png");
+  end.resize(800, 100);
   back = loadImage("grass.png");
   back.resize(800, 620);
   mid = loadImage("grass.png");
@@ -188,12 +195,6 @@ void draw(){
   
   if (genBigRoad){
     image(bigRoad, 0, bRoady);
-    
-    
- 
-
-
-   
     genCarsBig();
     if (bRoady >800) {
       genBigRoad = false;
@@ -202,13 +203,12 @@ void draw(){
   }
   if (genRoad){
     image(road, 0, roady+10);
- 
-   
     genCars(); 
     if (roady >600) {
       genRoad = false;
       roady = -300;
     }
+    
   }
 
   if (by <-600) {by = 600;} if (by2 <-600) {by2 = 600;}
@@ -216,9 +216,18 @@ void draw(){
   if (fy <-600) {fy = 600;} if (fy2 <-600) {fy2 = 600;}
   if (by > 600) {by = -600;} if (by2 > 600) {by2 = -600;}
   if (my >600) {by = -600;} if (by2 >600) {by2 = -600;}
-  if (fy >600) {fy = -600;} if (fy2 >600) {fy2 = -600;}
+  if (fy >600) {fy = -600;} if (fy2 >600) {fy2 = -600;}  
   generateRoads();
   generateBigRoad();
+  if (counter == 2295){
+    System.out.println("U won. My grandma's pround");
+    
+  }
+  if (counter > 2295){
+    image(end, 0, roady);
+    System.out.println("Y are you still playing? Bad things will happen to the code if you continue");
+    
+  }
 }
 
 void keyPressed() {
@@ -257,7 +266,7 @@ protected void generateBigRoad(){
   bigRoad.resize(800, 160);
   
   int speedUp = counter / 100 ;
-  if (counter % (50 - speedUp) == 0){ //what about winning a game? how should we do that?
+  if (counter % (30- speedUp) == 0){ //what about winning a game? how should we do that?
          
     genBigRoad = true;
     
@@ -269,7 +278,7 @@ protected void generateRoads(){
   road.resize(800, 80);
   
   int speedUp = counter / 100;
-  if (counter % (50 -speedUp) == 0){ //what about winning a game? how should we do that?
+  if (counter % (30-speedUp) == 0){ //what about winning a game? how should we do that?
          
     genRoad = true;
     
