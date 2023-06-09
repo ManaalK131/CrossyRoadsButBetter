@@ -25,12 +25,17 @@ int backCounter;
 int yCoor; 
 PImage[] carArray = new PImage[4];
 
-
+boolean walkingDead = false;
+boolean normal = false; 
 
 int bRoady = roady + 150;
 
 PImage fore;
 int fy = 0, fy2 = 600;
+
+Buttons button; 
+
+
 
 
 void CarSetup(int type, int yCoor){ 
