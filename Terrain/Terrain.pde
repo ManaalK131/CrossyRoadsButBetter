@@ -25,25 +25,23 @@ int backCounter;
 int yCoor; 
 PImage[] carArray = new PImage[4];
 
-boolean walkingDead = false;
-boolean normal = false; 
-
 int bRoady = roady + 150;
-
 PImage fore;
 int fy = 0, fy2 = 600;
 
-Buttons button; 
 
-
+Buttons mode1; 
+Buttons mode2;
+boolean walkingDead = false;
+boolean normal = false; 
+boolean gameState = false;
+PImage start;
 
 
 void CarSetup(int type, int yCoor){ 
  if (type == 0){
     carArray[0].resize(80, 50);
     image(carArray[0], vr, yCoor);
-
-
   }
   if (type == 1){
      carArray[1].resize(80, 80);
@@ -64,14 +62,9 @@ void CarSetup(int type, int yCoor){
   
   
 void CarSetupBig(int type, int yCoor){ 
- 
- 
-  
  if (type == 0){
     carArray[0].resize(80, 50);
     image(carArray[0], vbr, yCoor);
-
-
   }
   if (type == 1){
      carArray[1].resize(80, 80);
@@ -88,8 +81,6 @@ void CarSetupBig(int type, int yCoor){
    image(carArray[3], vbb, yCoor+30);
 
 }
-  
-  
 }
 
 
@@ -165,69 +156,111 @@ void genCars(){
   }
 
   
+void startScreen(){
+  start = loadImage("start.png");
+  start.resize(800, 600);
+  background(start);
+  mode1 = new Buttons(50, 100, 100, 50, "Normal", 0, 200, 200);
+  mode2 = new Buttons(50, 300, 130, 60, "Walking Dead", 0, 200, 200);
+  if (mode1.isClicked()  || mode2.isClicked()){
+    gameState = true;
+  }
+  System.out.println(gameState);
+}
 
 
 
 void setup(){
   size(800, 600);
-  carArray[0] = loadImage("redCar.png");
-  carArray[0].resize(80, 50);
-  carArray[1] = loadImage("greenCar.png");
-  carArray[2] = loadImage("blueCar.png");
-  carArray[3] = loadImage("police.png");
-  carArray[1].resize(80, 80);
-  carArray[2].resize(80, 80);
-  carArray[3].resize(80, 50);
-  end = loadImage("congrats.png");
-  end.resize(800, 100);
-  back = loadImage("grass.png");
-  back.resize(800, 620);
-  mid = loadImage("grass.png");
-  mid.resize(800, 608);
-  fore = loadImage("grass.png");
-  fore.resize(800, 620);
+  if (gameState == false){
+    startScreen();
+
+  }
+  else{
+    if (mode1.isClicked()){
+      carArray[0] = loadImage("redCar.png");
+      carArray[0].resize(80, 50);
+      carArray[1] = loadImage("greenCar.png");
+      carArray[2] = loadImage("blueCar.png");
+      carArray[3] = loadImage("police.png");
+      carArray[1].resize(80, 80);
+      carArray[2].resize(80, 80);
+      carArray[3].resize(80, 50);
+    }
+    if (mode2.isClicked()){
+      carArray[0] = loadImage("zombie0.png");
+      carArray[1] = loadImage("zombie1.png");
+      carArray[2] = loadImage("zombie2.png");
+      carArray[3] = loadImage("car4.png");
+   //   carArray[1].resize(80, 40);
+    //  carArray[3].resize(80, 60);
+    }
+    end = loadImage("congrats.png");
+    end.resize(800, 100);
+    back = loadImage("grass.png");
+    back.resize(800, 620);
+    mid = loadImage("grass.png");
+    mid.resize(800, 608);
+    fore = loadImage("grass.png");
+    fore.resize(800, 620);
+  }
 }
 
 void draw(){
-  image(back, 0, by); image(back, 0, by2);
-  image(mid, 0, my); image(back,0, my2);
-  image(fore,0, fy); image(fore, 0, fy2);
-  
-  if (genBigRoad){
-    image(bigRoad, 0, bRoady);
-    genCarsBig();
-    if (bRoady >800) {
-      genBigRoad = false;
-      bRoady = -100;
+  startScreen();
+  mode1.update();
+  mode1.render();
+  mode2.update();
+  mode2.render();
+  textAlign(CENTER);
+  textSize(20);
+  text("Pick mode and avatar", 400, 20);
+  if (mode1.isClicked()  || mode2.isClicked()){
+    gameState = true;
+    setup();
+  }
+  System.out.println(gameState);
+  if (gameState == true){
+      
+      image(back, 0, by); image(back, 0, by2);
+      image(mid, 0, my); image(back,0, my2);
+      image(fore,0, fy); image(fore, 0, fy2);
+      if (genBigRoad){
+        image(bigRoad, 0, bRoady);
+        genCarsBig();
+        if (bRoady >800) {
+          genBigRoad = false;
+          bRoady = -100;
+        }
+      }
+      if (genRoad){
+        image(road, 0, roady+10);
+        genCars(); 
+        if (roady >600) {
+          genRoad = false;
+          roady = -300;
+        }
+        
+      }
+    
+      if (by <-600) {by = 600;} if (by2 <-600) {by2 = 600;}
+      if (my <-600) {by = 600;} if (by2 <-600) {by2 = 600;}
+      if (fy <-600) {fy = 600;} if (fy2 <-600) {fy2 = 600;}
+      if (by > 600) {by = -600;} if (by2 > 600) {by2 = -600;}
+      if (my >600) {by = -600;} if (by2 >600) {by2 = -600;}
+      if (fy >600) {fy = -600;} if (fy2 >600) {fy2 = -600;}  
+      generateRoads();
+      generateBigRoad();
+      if (counter == 2295){
+        System.out.println("U won. My grandma's pround");
+        
+      }
+      if (counter > 2295){
+        image(end, 0, roady);
+        System.out.println("Y are you still playing? Bad things will happen to the code if you continue");
+        
+      }
     }
-  }
-  if (genRoad){
-    image(road, 0, roady+10);
-    genCars(); 
-    if (roady >600) {
-      genRoad = false;
-      roady = -300;
-    }
-    
-  }
-
-  if (by <-600) {by = 600;} if (by2 <-600) {by2 = 600;}
-  if (my <-600) {by = 600;} if (by2 <-600) {by2 = 600;}
-  if (fy <-600) {fy = 600;} if (fy2 <-600) {fy2 = 600;}
-  if (by > 600) {by = -600;} if (by2 > 600) {by2 = -600;}
-  if (my >600) {by = -600;} if (by2 >600) {by2 = -600;}
-  if (fy >600) {fy = -600;} if (fy2 >600) {fy2 = -600;}  
-  generateRoads();
-  generateBigRoad();
-  if (counter == 2295){
-    System.out.println("U won. My grandma's pround");
-    
-  }
-  if (counter > 2295){
-    image(end, 0, roady);
-    System.out.println("Y are you still playing? Bad things will happen to the code if you continue");
-    
-  }
 }
 
 void keyPressed() {
