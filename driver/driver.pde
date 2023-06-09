@@ -24,7 +24,7 @@ void setup(){
   terr.fore = loadImage("magic.png");
   terr.fore.resize(800, 610);
   size(800, 600); 
-  pl.player = loadImage("adorable.png");
+  pl.player = loadImage("pika.png");
   endscreen = loadImage("gameover.png");
   endscreen.resize(800, 600);
 }
