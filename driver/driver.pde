@@ -9,38 +9,6 @@ void setup(){
   terr = new Terrain();
   pl = new player();
   size(800, 600);
-   if (terr.gameState == false){
-    terr.startScreen();
-
-  }
-  else{
-    if (terr.mode1.isClicked()){
-      terr.carArray[0] = loadImage("redCar.png");
-      terr.carArray[0].resize(80, 50);
-      terr.carArray[1] = loadImage("greenCar.png");
-      terr.carArray[2] = loadImage("blueCar.png");
-      terr.carArray[3] = loadImage("police.png");
-      terr.carArray[1].resize(80, 80);
-      terr.carArray[2].resize(80, 80);
-      terr.carArray[3].resize(80, 50);
-    }
-    if (terr.mode2.isClicked()){
-      terr.carArray[0] = loadImage("zombie0.png");
-      terr.carArray[1] = loadImage("zombie1.png");
-      terr.carArray[2] = loadImage("zombie2.png");
-      terr.carArray[3] = loadImage("car4.png");
-   //   carArray[1].resize(80, 40);
-    //  carArray[3].resize(80, 60);
-    }
-    terr.end = loadImage("congrats.png");
-    terr.end.resize(800, 100);
-    terr.back = loadImage("grass.png");
-    terr.back.resize(800, 620);
-    terr.mid = loadImage("grass.png");
-    terr.mid.resize(800, 608);
-    terr.fore = loadImage("grass.png");
-    terr.fore.resize(800, 620);
-  }
   terr.carArray[0] = loadImage("redCar.png");
   terr.carArray[0].resize(80, 50);
   terr.carArray[1] = loadImage("greenCar.png");
@@ -56,42 +24,15 @@ void setup(){
   terr.fore = loadImage("magic.png");
   terr.fore.resize(800, 610);
   size(800, 600); 
-  pl.player = loadImage("pika.png");
+  pl.player = loadImage("adorable.png");
   endscreen = loadImage("gameover.png");
   endscreen.resize(800, 600);
 }
 
 void draw(){
-  terr.startScreen();
-  terr.mode1.update();
-  terr.mode1.render();
-  terr.mode2.update();
-  terr.mode2.render();
-  textAlign(CENTER);
-  textSize(20);
-  text("Pick mode and avatar", 400, 20);
-  if (terr.mode1.isClicked()  || terr.mode2.isClicked()){
-    terr.gameState = true;
-    setup();
-  }
-  System.out.println(terr.gameState);
-  if (terr.gameState == true){
-      
-      image(terr.back, 0, terr.by); image(terr.back, 0, terr.by2);
-      image(terr.mid, 0, terr.my); image(terr.back,0, terr.my2);
-      image(terr.fore,0, terr.fy); image(terr.fore, 0, terr.fy2);
-      if (terr.genBigRoad){
-        image(terr.bigRoad, 0, terr.bRoady);
-        terr.genCarsBig();
-        if (terr.bRoady >800) {
-          terr.genBigRoad = false;
-          terr.bRoady = -100;
-        }
-      }
-    }
-  //image(terr.back, 0, terr.by); image(terr.back, 0, terr.by2);
-  //image(terr.mid, 0, terr.my); image(terr.back,0, terr.my2);
-  //image(terr.fore,0, terr.fy); image(terr.fore, 0, terr.fy2);
+  image(terr.back, 0, terr.by); image(terr.back, 0, terr.by2);
+  image(terr.mid, 0, terr.my); image(terr.back,0, terr.my2);
+  image(terr.fore,0, terr.fy); image(terr.fore, 0, terr.fy2);
   if (terr.genBigRoad){
     image(terr.bigRoad, 0, terr.bRoady);
     terr.genCarsBig();
