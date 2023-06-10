@@ -99,7 +99,10 @@ void draw(){
       terr.carArray[3] = loadImage("car4.png");
       System.out.println("mode2");
     }
-    if ((mode1.isClicked()  || mode2.isClicked()) && (player1.isClicked() || player2.isClicked() || player3.isClicked() || player4.isClicked())){
+    if ((mode1.isClicked()  || mode2.isClicked()) 
+    && (player1.isClicked() || player2.isClicked() 
+    || player3.isClicked() || player4.isClicked())
+    ){
       gameState = true;
     }
     }
