@@ -24,7 +24,7 @@ void startScreen(){
   textAlign(CENTER);
   textSize(20);
   text("Pick mode and avatar", 400, 20);
-  //System.out.println(gameState);
+
 }
 
 void setup(){
@@ -66,19 +66,19 @@ void draw(){
     player4.render();
            if (player1.isClicked()){
       pl.player = loadImage("pika.png");
-      System.out.println("pika.png");
+      
     }
     if (player2.isClicked()){
       pl.player = loadImage("psyduck.png");
-      System.out.println("psyduck.png");
+      
     }
     if (player3.isClicked()){
       pl.player = loadImage("eevee.png");
-      System.out.println("eevee.png");
+    
     }
     if (player4.isClicked()){
       pl.player = loadImage("snorlax.png");
-      System.out.println("snorlax.png");
+      
     }
     if (mode1.isClicked()){
       terr.carArray[0] = loadImage("redCar.png");
@@ -89,14 +89,14 @@ void draw(){
       terr.carArray[1].resize(80, 80);
       terr.carArray[2].resize(80, 80);
       terr.carArray[3].resize(80, 50);
-      System.out.println("mode1");
+    
     }
     if (mode2.isClicked()){
       terr.carArray[0] = loadImage("zombie0.png");
       terr.carArray[1] = loadImage("zombie1.png");
       terr.carArray[2] = loadImage("zombie2.png");
       terr.carArray[3] = loadImage("car4.png");
-      System.out.println("mode2");
+     
     }
     if ((mode1.isClicked()  || mode2.isClicked()) 
     && (player1.isClicked() || player2.isClicked() 
@@ -105,7 +105,7 @@ void draw(){
       gameState = true;
     }
     }
-    //System.out.println(gameState);
+
     if (gameState == true){
       image(terr.back, 0, terr.by); image(terr.back, 0, terr.by2);
       image(terr.mid, 0, terr.my); image(terr.back,0, terr.my2);
@@ -159,11 +159,7 @@ void draw(){
 }
 
 boolean collision(){
-    //System.out.println(terr.vbp);
-    //System.out.println(terr.bRoady+75);
-    //System.out.println(pl.x);
-    //System.out.println(pl.y);
-    //System.out.println(Distance(terr.vbp, terr.bRoady-55, pl.x, pl.y));
+
     
   if ((Distance(terr.vr, terr.roady, pl.x, pl.y) < 15)|| 
   (Distance(terr.vg, terr.roady+20, pl.x, pl.y) < 15)|| 
