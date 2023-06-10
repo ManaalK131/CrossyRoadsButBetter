@@ -196,7 +196,7 @@ protected void generateBigRoad(){
   bigRoad.resize(800, 160);
   
   int speedUp = counter / 100 ;
-  if (counter % (50 - speedUp) == 0){ //what about winning a game? how should we do that?
+  if (counter % (30 - speedUp) == 0){ //what about winning a game? how should we do that?
          
     genBigRoad = true;
     
@@ -207,7 +207,7 @@ protected void generateRoads(){
   road = loadImage("shortRoad.png");
   road.resize(800, 80);
   int speedUp = counter / 100;
-  if (counter % (50 -speedUp) == 0){ //what about winning a game? how should we do that?
+  if (counter % (30 -speedUp) == 0){ //what about winning a game? how should we do that?
     
     genRoad = true;
     
