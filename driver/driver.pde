@@ -17,35 +17,55 @@ player pl;
 protected PImage endscreen;
 protected int lost = 0;
 boolean showEnd;
-int chosen = 1;
 
 void startScreen(){
   start = loadImage("start.png");
   start.resize(800, 600);
   background(start);
+  textAlign(CENTER);
+  textSize(20);
+  text("Pick mode and avatar", 400, 20);
+  //System.out.println(gameState);
+}
+
+void setup(){
+  size(800, 600);
   mode1 = new Buttons(50, 100, 100, 50, "Normal", 0, 200, 200);
   mode2 = new Buttons(40, 300, 130, 60, "Walking Dead", 0, 200, 200);
   player1 = new Buttons(665, 100, 100, 50, "Pikachu", 240, 248, 255);
   player2 = new Buttons(650, 200, 130, 60, "Psyduck", 240, 248, 255);
   player3 = new Buttons(650, 300, 130, 60, "Eevee", 240, 248, 255);
   player4 = new Buttons(650, 400, 130, 60, "Snorlax", 240, 248, 255);
-  if ((mode1.isClicked()  || mode2.isClicked()) && (player1.isClicked() || player2.isClicked() || player3.isClicked() || player4.isClicked())){
-    gameState = true;
-  }
-  //System.out.println(gameState);
-}
-
-
-void setup(){
-  size(800, 600);
-  if (gameState == false){
-    startScreen();
-  }
-  else{
     terr = new Terrain();
     pl = new player();
-    size(800, 600);
-    if (player1.isClicked()){
+
+    terr.back = loadImage("magic.png");
+    terr.back.resize(800, 610);
+    terr.mid = loadImage("magic.png");
+    terr.mid.resize(800, 608);
+    terr.fore = loadImage("magic.png");
+    terr.fore.resize(800, 610);
+
+    endscreen = loadImage("gameover.png");
+    endscreen.resize(800, 600);
+}
+
+void draw(){
+  if (gameState == false){
+    startScreen();
+    mode1.update();
+    mode1.render();
+    mode2.update();
+    mode2.render();
+    player1.update();
+    player1.render();
+    player2.update();
+    player2.render();
+    player3.update();
+    player3.render();
+    player4.update();
+    player4.render();
+           if (player1.isClicked()){
       pl.player = loadImage("pika.png");
       System.out.println("pika.png");
     }
@@ -79,38 +99,9 @@ void setup(){
       terr.carArray[3] = loadImage("car4.png");
       System.out.println("mode2");
     }
-    terr.back = loadImage("magic.png");
-    terr.back.resize(800, 610);
-    terr.mid = loadImage("magic.png");
-    terr.mid.resize(800, 608);
-    terr.fore = loadImage("magic.png");
-    terr.fore.resize(800, 610);
-    size(800, 600); 
-    endscreen = loadImage("gameover.png");
-    endscreen.resize(800, 600);
-  }
-}
-
-void draw(){
-    startScreen();
-    mode1.update();
-    mode1.render();
-    mode2.update();
-    mode2.render();
-    player1.update();
-    player1.render();
-    player2.update();
-    player2.render();
-    player3.update();
-    player3.render();
-    player4.update();
-    player4.render();
-    textAlign(CENTER);
-    textSize(20);
-    text("Pick mode and avatar", 400, 20);
     if ((mode1.isClicked()  || mode2.isClicked()) && (player1.isClicked() || player2.isClicked() || player3.isClicked() || player4.isClicked())){
       gameState = true;
-      setup();
+    }
     }
     //System.out.println(gameState);
     if (gameState == true){
