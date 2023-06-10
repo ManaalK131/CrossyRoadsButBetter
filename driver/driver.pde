@@ -14,9 +14,7 @@ PImage start;
 
 Terrain terr;
 player pl;
-protected PImage endscreen;
-protected int lost = 0;
-boolean showEnd;
+
 
 void startScreen(){
   start = loadImage("start.png");
@@ -46,8 +44,6 @@ void setup(){
     terr.fore = loadImage("magic.png");
     terr.fore.resize(800, 610);
 
-    endscreen = loadImage("gameover.png");
-    endscreen.resize(800, 600);
 }
 
 void draw(){
