@@ -9,6 +9,7 @@ Buttons player3;
 Buttons player4;
 boolean gameState = false;
 PImage start; 
+PImage congrats;
 
 Terrain terr;
 player pl;
@@ -147,6 +148,11 @@ void draw(){
      }
      while(lost > 0){
        image(endscreen, 60, 0);
+     }
+     if (terr.counter >= 2980){
+       congrats = loadImage("congrats.png");
+       congrats.resize(800, 200);
+       image(congrats, 0, terr.roady);
      }
     }
   
