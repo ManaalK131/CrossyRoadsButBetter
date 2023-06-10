@@ -7,10 +7,6 @@ Buttons player1;
 Buttons player2;
 Buttons player3;
 Buttons player4;
-<<<<<<< HEAD
-
-=======
->>>>>>> 52dc708d2967926a85ca2a5dc6096c625d172d79
 boolean gameState = false;
 PImage start; 
 
@@ -32,21 +28,12 @@ void startScreen(){
 
 void setup(){
   size(800, 600);
-<<<<<<< HEAD
-  mode1 = new Buttons(50, 100, 100, 50, "Normal", 204, 225, 242);
-  mode2 = new Buttons(40, 300, 130, 60, "Walking Dead", 198, 248, 229);
-  player1 = new Buttons(665, 100, 100, 50, "Pikachu", 251, 247, 213);
-  player2 = new Buttons(650, 200, 130, 60, "Psyduck", 249, 222, 215);
-  player3 = new Buttons(650, 300, 130, 60, "Eevee", 245, 205, 222);
-  player4 = new Buttons(650, 400, 130, 60, "Snorlax", 226, 190, 241);
-=======
   mode1 = new Buttons(50, 100, 100, 50, "Normal", 0, 200, 200);
   mode2 = new Buttons(40, 300, 130, 60, "Walking Dead", 171, 16, 5);
   player1 = new Buttons(665, 100, 100, 50, "Pikachu", 201, 214, 17);
   player2 = new Buttons(650, 200, 130, 60, "Psyduck", 11, 161, 151);
   player3 = new Buttons(650, 300, 130, 60, "Eevee", 143, 48, 10);
   player4 = new Buttons(650, 400, 130, 60, "Snorlax", 1, 112, 12);
->>>>>>> 52dc708d2967926a85ca2a5dc6096c625d172d79
     terr = new Terrain();
     pl = new player();
 
@@ -57,7 +44,7 @@ void setup(){
     terr.fore = loadImage("magic.png");
     terr.fore.resize(800, 610);
 
-   endscreen = loadImage("gameover.png");
+    endscreen = loadImage("gameover.png");
     endscreen.resize(800, 600);
 }
 
