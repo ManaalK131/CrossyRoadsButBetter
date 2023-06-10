@@ -25,11 +25,11 @@ void startScreen(){
   background(start);
   mode1 = new Buttons(50, 100, 100, 50, "Normal", 0, 200, 200);
   mode2 = new Buttons(40, 300, 130, 60, "Walking Dead", 0, 200, 200);
-  player1 = new Buttons(665, 100, 100, 50, "Pikachu", 0, 200, 200);
-  player2 = new Buttons(650, 200, 130, 60, "Psyduck", 0, 200, 200);
-  player3 = new Buttons(650, 300, 130, 60, "Eevee", 0, 200, 200);
-  player4 = new Buttons(650, 400, 130, 60, "Snorlax", 0, 200, 200);
-  if (mode1.isClicked()  || mode2.isClicked()){
+  player1 = new Buttons(665, 100, 100, 50, "Pikachu", 240, 248, 255);
+  player2 = new Buttons(650, 200, 130, 60, "Psyduck", 240, 248, 255);
+  player3 = new Buttons(650, 300, 130, 60, "Eevee", 240, 248, 255);
+  player4 = new Buttons(650, 400, 130, 60, "Snorlax", 240, 248, 255);
+  if ((mode1.isClicked()  || mode2.isClicked()) && (player1.isClicked() || player2.isClicked() || player3.isClicked() || player4.isClicked())){
     gameState = true;
   }
   //System.out.println(gameState);
@@ -46,34 +46,21 @@ void setup(){
     pl = new player();
     size(800, 600);
     if (player1.isClicked()){
-      chosen = 1;
-      System.out.println(chosen);
+      pl.player = loadImage("pika.png");
+      System.out.println("pika.png");
     }
     if (player2.isClicked()){
-      chosen = 2;
-      System.out.println(chosen);
+      pl.player = loadImage("psyduck.png");
+      System.out.println("psyduck.png");
     }
     if (player3.isClicked()){
-      chosen = 3;
-      System.out.println(chosen);
+      pl.player = loadImage("eevee.png");
+      System.out.println("eevee.png");
     }
     if (player4.isClicked()){
-      chosen = 4;
-      System.out.println(chosen);
-    }
-    if (chosen == 1){
-      pl.player = loadImage("pika.png");
-    }
-    if (chosen == 2){
-      pl.player = loadImage("psyduck.png");
-    }
-    if (chosen == 3){
-      pl.player = loadImage("eevee.png");
-    }
-    if (chosen == 4){
       pl.player = loadImage("snorlax.png");
+      System.out.println("snorlax.png");
     }
-        
     if (mode1.isClicked()){
       terr.carArray[0] = loadImage("redCar.png");
       terr.carArray[0].resize(80, 50);
@@ -162,7 +149,7 @@ void draw(){
      terr.move();
      if (collision()==true){
        lost++;
-       endscreen = loadImage("oof.png");
+       endscreen = loadImage("gameover.png");
        endscreen.resize(800, 600);
        showEnd = true;
      }
