@@ -108,7 +108,7 @@ void draw(){
     textAlign(CENTER);
     textSize(20);
     text("Pick mode and avatar", 400, 20);
-    if (mode1.isClicked()  || mode2.isClicked()){
+    if ((mode1.isClicked()  || mode2.isClicked()) && (player1.isClicked() || player2.isClicked() || player3.isClicked() || player4.isClicked())){
       gameState = true;
       setup();
     }
