@@ -7,8 +7,6 @@ Buttons player1;
 Buttons player2;
 Buttons player3;
 Buttons player4;
-boolean walkingDead = false;
-boolean normal = false; 
 boolean gameState = false;
 PImage start; 
 
@@ -29,11 +27,11 @@ void startScreen(){
 void setup(){
   size(800, 600);
   mode1 = new Buttons(50, 100, 100, 50, "Normal", 0, 200, 200);
-  mode2 = new Buttons(40, 300, 130, 60, "Walking Dead", 0, 200, 200);
-  player1 = new Buttons(665, 100, 100, 50, "Pikachu", 240, 248, 255);
-  player2 = new Buttons(650, 200, 130, 60, "Psyduck", 240, 248, 255);
-  player3 = new Buttons(650, 300, 130, 60, "Eevee", 240, 248, 255);
-  player4 = new Buttons(650, 400, 130, 60, "Snorlax", 240, 248, 255);
+  mode2 = new Buttons(40, 300, 130, 60, "Walking Dead", 171, 16, 5);
+  player1 = new Buttons(665, 100, 100, 50, "Pikachu", 201, 214, 17);
+  player2 = new Buttons(650, 200, 130, 60, "Psyduck", 11, 161, 151);
+  player3 = new Buttons(650, 300, 130, 60, "Eevee", 143, 48, 10);
+  player4 = new Buttons(650, 400, 130, 60, "Snorlax", 1, 112, 12);
     terr = new Terrain();
     pl = new player();
 
